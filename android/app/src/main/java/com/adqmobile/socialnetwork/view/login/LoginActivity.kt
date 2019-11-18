@@ -2,24 +2,23 @@ package com.adqmobile.socialnetwork.view.login
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import com.adqmobile.socialnetwork.R
 import com.adqmobile.socialnetwork.databinding.ActivityLoginBinding
+import kotlinx.android.synthetic.main.activity_login.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : BindingActivity<ActivityLoginBinding>() {
 
-    val viewModel: LoginViewModel by viewModel()
+    private val viewModel: LoginViewModel by viewModel()
+
+    override fun getLayoutId(): Int {
+        return R.layout.activity_login
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
-
-        val binding: ActivityLoginBinding = DataBindingUtil.setContentView(this, R.layout.activity_login)
         binding.viewModel = viewModel
-        binding.lifecycleOwner = this
 
         viewModel.getUser()
 
@@ -29,7 +28,7 @@ class LoginActivity : AppCompatActivity() {
             finish()
         })
 
-        binding.login.setOnClickListener {
+        login.setOnClickListener {
             viewModel.login()
         }
     }

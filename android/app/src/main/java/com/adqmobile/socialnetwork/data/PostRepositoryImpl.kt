@@ -16,7 +16,8 @@ class PostRepositoryImpl(
     }
 
     override suspend fun reactToPost(reaction: Reaction) {
-
+        val post = postService.postReaction(reaction.post.id!!, reaction)
+        postDao.insert(post)
     }
 
     override suspend fun retrieveAllPosts(): Array<Post> {

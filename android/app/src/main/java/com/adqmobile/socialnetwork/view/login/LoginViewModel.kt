@@ -24,8 +24,12 @@ class LoginViewModel(
     fun getUser() {
         viewModelScope.launch {
             loading.value = true
+            login.value = Login("", "")
             val users = getAllUsersUseCase.run()
-            loggedInUser.value = users[0]
+            if (users.isNotEmpty()) {
+                loggedInUser.value = users[0]
+                User.loggedUser = loggedInUser.value
+            }
             loading.value = false
         }
     }
@@ -36,7 +40,9 @@ class LoginViewModel(
             error.value = null
             try {
                 loggedInUser.value = loginUseCase.run(login.value!!)
+                User.loggedUser = loggedInUser.value
             } catch (e: Exception) {
+                e.printStackTrace()
                 error.value = e
             }
             loading.value = false

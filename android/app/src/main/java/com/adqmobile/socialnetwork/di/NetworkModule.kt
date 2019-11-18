@@ -1,6 +1,8 @@
 package com.adqmobile.socialnetwork.di
 
 import android.util.Log
+import com.adqmobile.socialnetwork.data.remote.EnumByValueAdapter
+import com.adqmobile.socialnetwork.domain.post.Reaction
 import com.google.gson.GsonBuilder
 import okhttp3.Cache
 import okhttp3.Interceptor
@@ -18,7 +20,10 @@ private const val READ_TIMEOUT = 15L
 val networkModule = module {
     single { Cache(androidApplication().cacheDir, 10L * 1024 * 1024) }
 
-    single { GsonBuilder().create() }
+    single {
+        GsonBuilder()
+            .create()
+    }
 
     single {
         OkHttpClient.Builder().apply {
@@ -29,7 +34,7 @@ val networkModule = module {
             retryOnConnectionFailure(true)
             addInterceptor { chain ->
                 chain.proceed(chain.request().newBuilder().apply {
-                    header("Accept", "*")
+                    header("Accept", "application/json")
                 }.build())
             }
             addInterceptor { chain ->
@@ -46,7 +51,7 @@ val networkModule = module {
 
     single {
         Retrofit.Builder()
-            .baseUrl("http://192.168.0.16:8080/")
+            .baseUrl("http://192.168.0.20:8080/")
             .addConverterFactory(GsonConverterFactory.create(get()))
             .client(get())
             .build()

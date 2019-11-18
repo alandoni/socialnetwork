@@ -13,19 +13,20 @@ import com.adqmobile.socialnetwork.domain.user.User
     entities = [User::class, Post::class],
     version = AppDatabase.DB_VERSION,
     exportSchema = false)
+@TypeConverters(DatabaseMapConverter::class)
 abstract class AppDatabase: RoomDatabase() {
 
     abstract fun userDao(): UserDao
     abstract fun postDao(): PostDao
 
     companion object {
-        const val DB_VERSION = 1
+        const val DB_VERSION = 2
 
         const val DB_NAME = "socialnetwork.db"
 
         val MIGRATION_1_TO_2 = object : Migration(1, 2) {
             override fun migrate(database: SupportSQLiteDatabase) {
-
+                database.execSQL("ALTER TABLE posts ADD COLUMN reactions TEXT DEFAULT NULL")
             }
         }
     }

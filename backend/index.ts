@@ -29,7 +29,7 @@ app.options('*', cors());
 app.use((request, response, next) => {
     setTimeout(() => {
         next();
-    }, 5000);
+    }, 500);
 });
 
 app.post('/login', (request, response) => {
