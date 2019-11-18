@@ -26,6 +26,11 @@ app.use(cors({
 
 app.options('*', cors());
 
+app.use((request, response, next) => {
+    setTimeout(() => {
+        next();
+    }, 5000);
+});
 
 app.post('/login', (request, response) => {
     const username = request.body.username;
