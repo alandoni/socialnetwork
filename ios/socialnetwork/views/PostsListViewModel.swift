@@ -10,7 +10,7 @@ import Combine
 
 class PostsListViewModel: ObservableObject {
 
-    @Published var posts = [PostResponse]()
+    @Published var posts = [Post]()
     @Published var error: String?
     @Published var loading: Bool = false
     @Published var newPost: String = ""
@@ -18,7 +18,7 @@ class PostsListViewModel: ObservableObject {
 
     func load() {
         self.loading = true
-        GetPostsUseCase(postRepository: PostRepositoryImpl(postService: PostService())).execute()?.sink(receiveCompletion: { completion in
+        _ = GetPostsUseCase(postRepository: PostRepositoryImpl(postService: PostService())).execute()?.sink(receiveCompletion: { completion in
             switch completion {
             case .finished:
                 break
@@ -35,7 +35,7 @@ class PostsListViewModel: ObservableObject {
 
     func onTapPost() {
         self.loading = true
-        CreatePostUseCase(postRepository: PostRepositoryImpl(postService: PostService())).execute(post: PostResponse(id: self.posts.count, user: 1, text: self.newPost))?.sink(receiveCompletion: { completion in
+        _ = CreatePostUseCase(postRepository: PostRepositoryImpl(postService: PostService())).execute(post: Post(id: self.posts.count, user: 1, text: self.newPost))?.sink(receiveCompletion: { completion in
             switch completion {
             case .finished:
                 break

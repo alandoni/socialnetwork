@@ -10,5 +10,5 @@ class Api<T: Codable, U: Codable> {
     var method: String = "GET"
     var url: String = ""
     var body: T? = nil
-    var responseType: U.Type? = nil
+    var responseType: U.Type = U.self
 }

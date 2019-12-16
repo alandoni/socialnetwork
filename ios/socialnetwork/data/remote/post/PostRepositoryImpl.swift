@@ -15,11 +15,11 @@ class PostRepositoryImpl: PostRepository {
         self.postService = postService
     }
 
-    func createPost(post: PostResponse) -> AnyPublisher<PostResponse, Error>? {
+    func createPost(post: Post) -> AnyPublisher<Post, Error> {
         return self.postService.postPost(post: post)
     }
 
-    func getPosts() -> AnyPublisher<[PostResponse], Error>? {
+    func getPosts() -> AnyPublisher<[Post], Error> {
         return self.postService.getPosts()
     }
 }

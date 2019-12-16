@@ -10,27 +10,39 @@ import Combine
 import Foundation
 
 class RemoteRequester {
-    let url = URL(string: "http://192.168.0.1")!
-    //public var cancellable: AnyCancellable? = nil
+    let url = URL(string: "http://192.168.15.14:8080")!
 
     enum HTTPError: LocalizedError {
         case statusCode
     }
 
-    func request<T: Codable, U: Codable>(api: Api<T, U>) -> AnyPublisher<U, Error>? {
+    func request<T: Codable, U: Codable>(api: Api<T, U>) -> AnyPublisher<U, Error> {
         var request = URLRequest(url: self.url.appendingPathComponent(api.url))
         request.httpMethod = api.method
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
         if (api.body != nil) {
-            request.httpBody = try! JSONEncoder().encode(api.body)
+            request.httpBody = try! JSONEncoder().encode(api.body!)
         }
         return URLSession.shared.dataTaskPublisher(for: request)
+        .handleEvents(receiveSubscription: { (sub) in
+                print(sub)
+            }, receiveOutput: { (response) in
+                print(response)
+            }, receiveCompletion: { (completion) in
+                print(completion)
+            }, receiveCancel: {
+                print("Cancel")
+            }, receiveRequest: { (demand) in
+                print(demand)
+            })
         .tryMap { output in
             guard let response = output.response as? HTTPURLResponse, response.statusCode == 200 else {
                 throw HTTPError.statusCode
             }
             return output.data
         }
-        .decode(type: api.responseType!, decoder: JSONDecoder())
+        .decode(type: api.responseType, decoder: JSONDecoder())
         .receive(on: DispatchQueue.main)
         .eraseToAnyPublisher()
     }

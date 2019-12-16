@@ -8,12 +8,11 @@
 
 import Foundation
 
-class PostPostApi: Api<PostResponse, PostResponse> {
+class PostPostApi: Api<Post, Post> {
 
-    init(body: PostResponse) {
+    init(body: Post) {
         super.init()
         self.method = "POST"
         self.body = body;
-        self.responseType = PostResponse.self
     }
 }

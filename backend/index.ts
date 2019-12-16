@@ -33,6 +33,7 @@ app.use((request, response, next) => {
 });
 
 app.post('/login', (request, response) => {
+    console.log(request.body);
     const username = request.body.username;
     const password = request.body.password;
 

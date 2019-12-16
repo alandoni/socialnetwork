@@ -12,15 +12,30 @@ struct LoginView: View {
     @ObservedObject var viewModel = LoginViewModel()
 
     var body: some View {
-        VStack {
-            TextField("User", text: $viewModel.userName)
-            TextField("Password", text: $viewModel.password)
-            Button(action: {
-                self.viewModel.didTapLogin()
-            },
-            label: {
-                Text("Login")
-            })
+        ZStack {
+            if (self.viewModel.loggedUser == nil) {
+                VStack {
+                    TextField("User", text: $viewModel.userName)
+                    TextField("Password", text: $viewModel.password)
+
+                    if (self.viewModel.error != nil) {
+                        Text(self.viewModel.error ?? "")
+                    }
+                    if (self.viewModel.loading) {
+                        ActivityIndicator()
+                    }
+                    Button(action: {
+                        self.viewModel.didTapLogin()
+                    },
+                    label: {
+                        Text("Login")
+                    })
+                }.padding()
+            } else {
+                PostsListView()
+            }
+        }.onAppear {
+            self.viewModel.load()
         }
     }
 }

@@ -6,7 +6,7 @@
 //  Copyright © 2019 Alan Donizete Quintiliano. All rights reserved.
 //
 
-struct PostResponse: Codable, Identifiable {
+struct Post: Codable, Identifiable {
     var id: Int
     var user: Int
     var text: String

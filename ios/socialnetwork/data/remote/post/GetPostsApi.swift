@@ -6,11 +6,10 @@
 //  Copyright © 2019 Alan Donizete Quintiliano. All rights reserved.
 //
 
-class GetPostsApi: Api<PostResponse, [PostResponse]> {
+class GetPostsApi: Api<Post, [Post]> {
     override init() {
         super.init()
-        self.method = "GET"
-        self.body = nil;
-        self.responseType = [PostResponse].self
+        self.url = "post"
+        self.responseType = [Post].self
     }
 }

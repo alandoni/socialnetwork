@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		074BFBF523A524C80076E6C3 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074BFBF423A524C80076E6C3 /* UserService.swift */; };
+		074BFBF723A524E10076E6C3 /* UserRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074BFBF623A524E10076E6C3 /* UserRepositoryImpl.swift */; };
+		074BFBF923A524FA0076E6C3 /* LoginApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074BFBF823A524FA0076E6C3 /* LoginApi.swift */; };
+		074BFBFB23A525AC0076E6C3 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074BFBFA23A525AC0076E6C3 /* UserRepository.swift */; };
+		074BFBFD23A525D30076E6C3 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074BFBFC23A525D30076E6C3 /* Login.swift */; };
+		074BFBFF23A5266D0076E6C3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074BFBFE23A5266D0076E6C3 /* User.swift */; };
+		074BFC0123A52FCB0076E6C3 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074BFC0023A52FCB0076E6C3 /* DataManager.swift */; };
+		074BFC0323A5447A0076E6C3 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074BFC0223A5447A0076E6C3 /* ActivityIndicator.swift */; };
+		074BFC0523A5450F0076E6C3 /* LoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074BFC0423A5450F0076E6C3 /* LoginUseCase.swift */; };
+		074BFC0723A55A1C0076E6C3 /* GetAllUsersUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074BFC0623A55A1C0076E6C3 /* GetAllUsersUseCase.swift */; };
 		C14D61F023A2BD400072914F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14D61EF23A2BD400072914F /* AppDelegate.swift */; };
 		C14D61F223A2BD400072914F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14D61F123A2BD400072914F /* SceneDelegate.swift */; };
 		C14D61F523A2BD400072914F /* socialnetwork.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C14D61F323A2BD400072914F /* socialnetwork.xcdatamodeld */; };
@@ -49,6 +59,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		074BFBF423A524C80076E6C3 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		074BFBF623A524E10076E6C3 /* UserRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepositoryImpl.swift; sourceTree = "<group>"; };
+		074BFBF823A524FA0076E6C3 /* LoginApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginApi.swift; sourceTree = "<group>"; };
+		074BFBFA23A525AC0076E6C3 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserRepository.swift; path = socialnetwork/data/remote/user/UserRepository.swift; sourceTree = SOURCE_ROOT; };
+		074BFBFC23A525D30076E6C3 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Login.swift; path = socialnetwork/domain/user/Login.swift; sourceTree = SOURCE_ROOT; };
+		074BFBFE23A5266D0076E6C3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		074BFC0023A52FCB0076E6C3 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DataManager.swift; path = socialnetwork/domain/user/DataManager.swift; sourceTree = SOURCE_ROOT; };
+		074BFC0223A5447A0076E6C3 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		074BFC0423A5450F0076E6C3 /* LoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginUseCase.swift; path = socialnetwork/views/LoginUseCase.swift; sourceTree = SOURCE_ROOT; };
+		074BFC0623A55A1C0076E6C3 /* GetAllUsersUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GetAllUsersUseCase.swift; path = socialnetwork/views/GetAllUsersUseCase.swift; sourceTree = SOURCE_ROOT; };
 		C14D61EC23A2BD400072914F /* socialnetwork.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = socialnetwork.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C14D61EF23A2BD400072914F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C14D61F123A2BD400072914F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -104,6 +124,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		074BFBF223A524950076E6C3 /* post */ = {
+			isa = PBXGroup;
+			children = (
+				C14D623623A4059D0072914F /* PostRepositoryImpl.swift */,
+				C14D623823A405DD0072914F /* PostService.swift */,
+				C14D623A23A4061E0072914F /* PostPostApi.swift */,
+				C14D624223A40B2C0072914F /* GetPostsApi.swift */,
+			);
+			path = post;
+			sourceTree = "<group>";
+		};
+		074BFBF323A524AF0076E6C3 /* user */ = {
+			isa = PBXGroup;
+			children = (
+				074BFBF423A524C80076E6C3 /* UserService.swift */,
+				074BFBF623A524E10076E6C3 /* UserRepositoryImpl.swift */,
+				074BFBF823A524FA0076E6C3 /* LoginApi.swift */,
+			);
+			path = user;
+			sourceTree = "<group>";
+		};
 		C14D61E323A2BD400072914F = {
 			isa = PBXGroup;
 			children = (
@@ -170,6 +211,7 @@
 				C14D622223A2C3130072914F /* PostsListViewModel.swift */,
 				C14D622623A3F7770072914F /* LoginView.swift */,
 				C14D622823A3F8210072914F /* LoginViewModel.swift */,
+				074BFC0223A5447A0076E6C3 /* ActivityIndicator.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -198,12 +240,10 @@
 		C14D622B23A3F8480072914F /* remote */ = {
 			isa = PBXGroup;
 			children = (
+				074BFBF323A524AF0076E6C3 /* user */,
+				074BFBF223A524950076E6C3 /* post */,
 				C14D622D23A3F8800072914F /* RemoteRequester.swift */,
 				C14D623423A3FBD60072914F /* Api.swift */,
-				C14D623623A4059D0072914F /* PostRepositoryImpl.swift */,
-				C14D623823A405DD0072914F /* PostService.swift */,
-				C14D623A23A4061E0072914F /* PostPostApi.swift */,
-				C14D624223A40B2C0072914F /* GetPostsApi.swift */,
 			);
 			path = remote;
 			sourceTree = "<group>";
@@ -211,6 +251,7 @@
 		C14D622C23A3F84C0072914F /* local */ = {
 			isa = PBXGroup;
 			children = (
+				074BFC0023A52FCB0076E6C3 /* DataManager.swift */,
 			);
 			path = local;
 			sourceTree = "<group>";
@@ -228,6 +269,9 @@
 			isa = PBXGroup;
 			children = (
 				C14D623323A3FB750072914F /* usecases */,
+				074BFBFC23A525D30076E6C3 /* Login.swift */,
+				074BFBFA23A525AC0076E6C3 /* UserRepository.swift */,
+				074BFBFE23A5266D0076E6C3 /* User.swift */,
 			);
 			path = user;
 			sourceTree = "<group>";
@@ -254,6 +298,8 @@
 		C14D623323A3FB750072914F /* usecases */ = {
 			isa = PBXGroup;
 			children = (
+				074BFC0423A5450F0076E6C3 /* LoginUseCase.swift */,
+				074BFC0623A55A1C0076E6C3 /* GetAllUsersUseCase.swift */,
 			);
 			path = usecases;
 			sourceTree = "<group>";
@@ -390,22 +436,32 @@
 			buildActionMask = 2147483647;
 			files = (
 				C14D623523A3FBD60072914F /* Api.swift in Sources */,
+				074BFC0123A52FCB0076E6C3 /* DataManager.swift in Sources */,
 				C14D623723A4059D0072914F /* PostRepositoryImpl.swift in Sources */,
+				074BFBF523A524C80076E6C3 /* UserService.swift in Sources */,
 				C14D622723A3F7770072914F /* LoginView.swift in Sources */,
+				074BFBF923A524FA0076E6C3 /* LoginApi.swift in Sources */,
 				C14D61F023A2BD400072914F /* AppDelegate.swift in Sources */,
 				C14D623D23A406840072914F /* Post.swift in Sources */,
 				C14D624323A40B2C0072914F /* GetPostsApi.swift in Sources */,
 				C14D622323A2C3130072914F /* PostsListViewModel.swift in Sources */,
+				074BFBFD23A525D30076E6C3 /* Login.swift in Sources */,
+				074BFC0523A5450F0076E6C3 /* LoginUseCase.swift in Sources */,
 				C14D623923A405DD0072914F /* PostService.swift in Sources */,
 				C14D61F523A2BD400072914F /* socialnetwork.xcdatamodeld in Sources */,
 				C14D624523A40B910072914F /* GetPostsUseCase.swift in Sources */,
 				C14D622E23A3F8800072914F /* RemoteRequester.swift in Sources */,
+				074BFC0723A55A1C0076E6C3 /* GetAllUsersUseCase.swift in Sources */,
 				C14D623F23A408E60072914F /* CreatePostUseCase.swift in Sources */,
+				074BFC0323A5447A0076E6C3 /* ActivityIndicator.swift in Sources */,
+				074BFBF723A524E10076E6C3 /* UserRepositoryImpl.swift in Sources */,
 				C14D624123A409020072914F /* PostRepository.swift in Sources */,
 				C14D61F723A2BD400072914F /* PostsListView.swift in Sources */,
+				074BFBFB23A525AC0076E6C3 /* UserRepository.swift in Sources */,
 				C14D61F223A2BD400072914F /* SceneDelegate.swift in Sources */,
 				C14D623B23A4061E0072914F /* PostPostApi.swift in Sources */,
 				C14D622923A3F8210072914F /* LoginViewModel.swift in Sources */,
+				074BFBFF23A5266D0076E6C3 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

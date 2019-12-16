@@ -15,7 +15,7 @@ class GetPostsUseCase {
         self.postRepository = postRepository
     }
 
-    func execute() -> AnyPublisher<[PostResponse], Error>? {
+    func execute() -> AnyPublisher<[Post], Error>? {
         return self.postRepository.getPosts()
     }
 }

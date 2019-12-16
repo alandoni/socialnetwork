@@ -9,7 +9,7 @@
 import Combine
 
 protocol PostRepository {
-    func createPost(post: PostResponse) -> AnyPublisher<PostResponse, Error>?
+    func createPost(post: Post) -> AnyPublisher<Post, Error>
 
-    func getPosts() -> AnyPublisher<[PostResponse], Error>?
+    func getPosts() -> AnyPublisher<[Post], Error>
 }

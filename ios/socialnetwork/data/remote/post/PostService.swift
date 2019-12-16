@@ -10,12 +10,12 @@ import Combine
 
 class PostService {
 
-    func postPost(post: PostResponse) -> AnyPublisher<PostResponse, Error>? {
+    func postPost(post: Post) -> AnyPublisher<Post, Error> {
         let api = PostPostApi(body: post)
         return RemoteRequester().request(api: api)
     }
 
-    func getPosts() ->  AnyPublisher<[PostResponse], Error>? {
+    func getPosts() ->  AnyPublisher<[Post], Error> {
        let api = GetPostsApi()
        return RemoteRequester().request(api: api)
    }
