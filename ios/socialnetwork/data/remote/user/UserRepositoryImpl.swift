@@ -16,7 +16,7 @@ class UserRepositoryImpl: UserRepository {
     }
 
     func store(user: User) -> AnyPublisher<User, Error> {
-        return DataManager().saveUser(user: user)
+        return UserDao().saveUser(user: user)
     }
 
     func login(login: Login) -> AnyPublisher<User, Error> {
@@ -24,7 +24,7 @@ class UserRepositoryImpl: UserRepository {
     }
 
     func retrieveAll() -> AnyPublisher<[User], Error> {
-        return DataManager().getUsers()
+        return UserDao().getUsers()
     }
 
 

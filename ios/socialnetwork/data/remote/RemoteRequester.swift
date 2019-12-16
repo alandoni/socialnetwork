@@ -10,7 +10,7 @@ import Combine
 import Foundation
 
 class RemoteRequester {
-    let url = URL(string: "http://192.168.15.14:8080")!
+    let url = URL(string: "http://192.168.15.10:8080")!
 
     enum HTTPError: LocalizedError {
         case statusCode

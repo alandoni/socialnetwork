@@ -10,6 +10,5 @@ class GetPostsApi: Api<Post, [Post]> {
     override init() {
         super.init()
         self.url = "post"
-        self.responseType = [Post].self
     }
 }

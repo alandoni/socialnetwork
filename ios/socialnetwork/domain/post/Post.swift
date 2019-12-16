@@ -7,7 +7,9 @@
 //
 
 struct Post: Codable, Identifiable {
-    var id: Int
-    var user: Int
+    var id: String
+    var user: User
     var text: String
+    var date: Int64
+    var reactions: Dictionary<String, Int>
 }

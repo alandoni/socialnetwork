@@ -9,6 +9,16 @@
 import SwiftUI
 import Combine
 
+struct PostView: View {
+    let post: Post
+
+    var body: some View {
+        VStack {
+            Text(self.post.user.name)
+        }
+    }
+}
+
 struct PostsListView: View {
     @ObservedObject var viewModel = PostsListViewModel()
 

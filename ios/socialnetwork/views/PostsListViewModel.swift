@@ -7,6 +7,7 @@
 //
 
 import Combine
+import Foundation
 
 class PostsListViewModel: ObservableObject {
 
@@ -35,7 +36,9 @@ class PostsListViewModel: ObservableObject {
 
     func onTapPost() {
         self.loading = true
-        _ = CreatePostUseCase(postRepository: PostRepositoryImpl(postService: PostService())).execute(post: Post(id: self.posts.count, user: 1, text: self.newPost))?.sink(receiveCompletion: { completion in
+        let post = Post(id: String(self.posts.count), user: User.loggedUser!, text: self.newPost, date: Int64(Date().timeIntervalSince1970), reactions: Dictionary())
+        _ = CreatePostUseCase(postRepository: PostRepositoryImpl(postService: PostService())).execute(post: post)
+            .sink(receiveCompletion: { completion in
             switch completion {
             case .finished:
                 break

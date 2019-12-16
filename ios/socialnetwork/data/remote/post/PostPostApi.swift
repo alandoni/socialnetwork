@@ -14,5 +14,6 @@ class PostPostApi: Api<Post, Post> {
         super.init()
         self.method = "POST"
         self.body = body;
+        self.url = "post"
     }
 }

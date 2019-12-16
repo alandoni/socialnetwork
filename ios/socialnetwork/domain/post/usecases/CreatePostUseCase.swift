@@ -15,7 +15,7 @@ class CreatePostUseCase {
         self.postRepository = postRepository
     }
 
-    func execute(post: Post) -> AnyPublisher<Post, Error>? {
+    func execute(post: Post) -> AnyPublisher<Post, Error> {
         return self.postRepository.createPost(post: post)
     }
 }

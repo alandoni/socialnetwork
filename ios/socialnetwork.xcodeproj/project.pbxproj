@@ -17,6 +17,8 @@
 		074BFC0323A5447A0076E6C3 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074BFC0223A5447A0076E6C3 /* ActivityIndicator.swift */; };
 		074BFC0523A5450F0076E6C3 /* LoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074BFC0423A5450F0076E6C3 /* LoginUseCase.swift */; };
 		074BFC0723A55A1C0076E6C3 /* GetAllUsersUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074BFC0623A55A1C0076E6C3 /* GetAllUsersUseCase.swift */; };
+		07FCAE5B23A81EE5000900A2 /* UserDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FCAE5A23A81EE5000900A2 /* UserDao.swift */; };
+		07FCAE5E23A81F40000900A2 /* PostsDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FCAE5D23A81F40000900A2 /* PostsDao.swift */; };
 		C14D61F023A2BD400072914F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14D61EF23A2BD400072914F /* AppDelegate.swift */; };
 		C14D61F223A2BD400072914F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14D61F123A2BD400072914F /* SceneDelegate.swift */; };
 		C14D61F523A2BD400072914F /* socialnetwork.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C14D61F323A2BD400072914F /* socialnetwork.xcdatamodeld */; };
@@ -65,10 +67,12 @@
 		074BFBFA23A525AC0076E6C3 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserRepository.swift; path = socialnetwork/data/remote/user/UserRepository.swift; sourceTree = SOURCE_ROOT; };
 		074BFBFC23A525D30076E6C3 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Login.swift; path = socialnetwork/domain/user/Login.swift; sourceTree = SOURCE_ROOT; };
 		074BFBFE23A5266D0076E6C3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		074BFC0023A52FCB0076E6C3 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DataManager.swift; path = socialnetwork/domain/user/DataManager.swift; sourceTree = SOURCE_ROOT; };
+		074BFC0023A52FCB0076E6C3 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DataManager.swift; path = socialnetwork/data/local/DataManager.swift; sourceTree = SOURCE_ROOT; };
 		074BFC0223A5447A0076E6C3 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		074BFC0423A5450F0076E6C3 /* LoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginUseCase.swift; path = socialnetwork/views/LoginUseCase.swift; sourceTree = SOURCE_ROOT; };
 		074BFC0623A55A1C0076E6C3 /* GetAllUsersUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GetAllUsersUseCase.swift; path = socialnetwork/views/GetAllUsersUseCase.swift; sourceTree = SOURCE_ROOT; };
+		07FCAE5A23A81EE5000900A2 /* UserDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserDao.swift; path = socialnetwork/data/local/UserDao.swift; sourceTree = SOURCE_ROOT; };
+		07FCAE5D23A81F40000900A2 /* PostsDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsDao.swift; sourceTree = "<group>"; };
 		C14D61EC23A2BD400072914F /* socialnetwork.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = socialnetwork.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C14D61EF23A2BD400072914F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C14D61F123A2BD400072914F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -143,6 +147,16 @@
 				074BFBF823A524FA0076E6C3 /* LoginApi.swift */,
 			);
 			path = user;
+			sourceTree = "<group>";
+		};
+		07FCAE5C23A81F00000900A2 /* local */ = {
+			isa = PBXGroup;
+			children = (
+				074BFC0023A52FCB0076E6C3 /* DataManager.swift */,
+				07FCAE5A23A81EE5000900A2 /* UserDao.swift */,
+				07FCAE5D23A81F40000900A2 /* PostsDao.swift */,
+			);
+			path = local;
 			sourceTree = "<group>";
 		};
 		C14D61E323A2BD400072914F = {
@@ -231,7 +245,7 @@
 		C14D622A23A3F8450072914F /* data */ = {
 			isa = PBXGroup;
 			children = (
-				C14D622C23A3F84C0072914F /* local */,
+				07FCAE5C23A81F00000900A2 /* local */,
 				C14D622B23A3F8480072914F /* remote */,
 			);
 			path = data;
@@ -246,14 +260,6 @@
 				C14D623423A3FBD60072914F /* Api.swift */,
 			);
 			path = remote;
-			sourceTree = "<group>";
-		};
-		C14D622C23A3F84C0072914F /* local */ = {
-			isa = PBXGroup;
-			children = (
-				074BFC0023A52FCB0076E6C3 /* DataManager.swift */,
-			);
-			path = local;
 			sourceTree = "<group>";
 		};
 		C14D622F23A3FB3C0072914F /* domain */ = {
@@ -438,6 +444,7 @@
 				C14D623523A3FBD60072914F /* Api.swift in Sources */,
 				074BFC0123A52FCB0076E6C3 /* DataManager.swift in Sources */,
 				C14D623723A4059D0072914F /* PostRepositoryImpl.swift in Sources */,
+				07FCAE5B23A81EE5000900A2 /* UserDao.swift in Sources */,
 				074BFBF523A524C80076E6C3 /* UserService.swift in Sources */,
 				C14D622723A3F7770072914F /* LoginView.swift in Sources */,
 				074BFBF923A524FA0076E6C3 /* LoginApi.swift in Sources */,
@@ -456,6 +463,7 @@
 				074BFC0323A5447A0076E6C3 /* ActivityIndicator.swift in Sources */,
 				074BFBF723A524E10076E6C3 /* UserRepositoryImpl.swift in Sources */,
 				C14D624123A409020072914F /* PostRepository.swift in Sources */,
+				07FCAE5E23A81F40000900A2 /* PostsDao.swift in Sources */,
 				C14D61F723A2BD400072914F /* PostsListView.swift in Sources */,
 				074BFBFB23A525AC0076E6C3 /* UserRepository.swift in Sources */,
 				C14D61F223A2BD400072914F /* SceneDelegate.swift in Sources */,
