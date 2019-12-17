@@ -16,6 +16,8 @@ class CreatePostUseCase {
     }
 
     func execute(post: Post) -> AnyPublisher<Post, Error> {
-        return self.postRepository.createPost(post: post)
+        return self.postRepository.storePost(post: post).flatMap { post -> AnyPublisher<Post, Error> in
+            return self.postRepository.createPost(post: post)
+        }.eraseToAnyPublisher()
     }
 }

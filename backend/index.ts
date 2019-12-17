@@ -76,6 +76,8 @@ app.post('/post/:id/reaction', (request, response) => {
     if (post) {
         const reaction = request.body;
 
+        console.log(`User reacted to post: ${postId} with reaction: ${reaction.reactionType}`);
+
         console.log(`User reaction to post: ${JSON.stringify(reaction)}`);
 
         const array = reactions[reaction.postId] || [];

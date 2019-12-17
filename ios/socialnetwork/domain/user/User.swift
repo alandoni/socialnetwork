@@ -6,7 +6,7 @@
 //  Copyright © 2019 Alan Donizete Quintiliano. All rights reserved.
 //
 
-struct User: Codable {
+struct User: Codable, Equatable {
     var id: String
     var name: String
     var email: String

@@ -9,7 +9,15 @@
 import Combine
 
 protocol PostRepository {
+    func storePost(post: Post) -> AnyPublisher<Post, Error>
+
     func createPost(post: Post) -> AnyPublisher<Post, Error>
 
     func getPosts() -> AnyPublisher<[Post], Error>
+
+    func readPosts() -> AnyPublisher<[Post], Error>
+
+    func storeReaction(reaction: Reaction) -> AnyPublisher<Reaction, Error>
+
+    func reactToPost(reaction: Reaction) -> AnyPublisher<Post, Error>
 }

@@ -16,6 +16,8 @@ class GetPostsUseCase {
     }
 
     func execute() -> AnyPublisher<[Post], Error>? {
-        return self.postRepository.getPosts()
+        return self.postRepository.readPosts()
+            .append(self.postRepository.getPosts())
+            .eraseToAnyPublisher()
     }
 }

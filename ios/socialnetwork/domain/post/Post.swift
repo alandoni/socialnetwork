@@ -6,7 +6,11 @@
 //  Copyright © 2019 Alan Donizete Quintiliano. All rights reserved.
 //
 
-struct Post: Codable, Identifiable {
+struct Post: Codable, Identifiable, Equatable {
+    static func == (lhs: Post, rhs: Post) -> Bool {
+        return lhs.id == rhs.id
+    }
+
     var id: String
     var user: User
     var text: String

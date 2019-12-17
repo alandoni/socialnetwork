@@ -5,23 +5,26 @@
         <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="reactions" optional="YES" attributeType="String"/>
         <attribute name="text" optional="YES" attributeType="String"/>
-        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="UserData"/>
+        <relationship name="reaction" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ReactionData" inverseName="post" inverseEntity="ReactionData"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="UserData" inverseName="posts" inverseEntity="UserData"/>
     </entity>
     <entity name="ReactionData" representedClassName="ReactionData" syncable="YES" codeGenerationType="class">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="reactionType" optional="YES" attributeType="String"/>
-        <relationship name="post" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PostData"/>
-        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="UserData"/>
+        <relationship name="post" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PostData" inverseName="reaction" inverseEntity="PostData"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="UserData" inverseName="reactions" inverseEntity="UserData"/>
     </entity>
     <entity name="UserData" representedClassName="UserData" syncable="YES" codeGenerationType="class">
         <attribute name="email" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="posts" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PostData" inverseName="user" inverseEntity="PostData"/>
+        <relationship name="reactions" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ReactionData" inverseName="user" inverseEntity="ReactionData"/>
     </entity>
     <elements>
-        <element name="PostData" positionX="-54" positionY="18" width="128" height="118"/>
+        <element name="PostData" positionX="-54" positionY="18" width="128" height="133"/>
         <element name="ReactionData" positionX="-45" positionY="63" width="128" height="118"/>
-        <element name="UserData" positionX="-63" positionY="-18" width="128" height="88"/>
+        <element name="UserData" positionX="-63" positionY="-18" width="128" height="118"/>
     </elements>
 </model>
