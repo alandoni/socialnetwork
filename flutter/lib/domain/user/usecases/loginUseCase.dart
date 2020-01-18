@@ -10,7 +10,9 @@ class LoginUseCase {
     this.userRepository = userRepository;
   }
 
-  Future<User> run(Login login) {
-    return userRepository.login(login);
+  Future<User> run(Login login) async {
+    User user = await userRepository.login(login);
+    await userRepository.store(user);
+    return user;
   }
 }

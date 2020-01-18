@@ -14,9 +14,9 @@ class PostDao {
   }
 
   Future<List<Post>> getAll() async {
-    List<Map<String, dynamic>> list = await this.database.get(TABLE, null, null);
-    return list.map((Map model) {
+    List<Map<String, dynamic>> items = await this.database.get(TABLE, null, null);
+    return items.map((model) {
       return Post.fromJson(model);
-    });
+    }).toList();
   }
 }

@@ -6,7 +6,7 @@ class User extends Codable {
   String email;
   
   User.fromJson(Map<String, dynamic> json) : 
-    id = json["id"],
+    id = json["id"].toString(),
     username = json["username"],
     email = json["email"],
     super.fromJson(json);

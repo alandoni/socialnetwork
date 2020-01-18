@@ -22,9 +22,13 @@ class LoginViewModel extends ChangeNotifier {
   }
 
   void loadData() async {
-    List<User> users = await GetAllUsersUseCase(userRepository).run();
-    if (users != null && users.length > 0) {
-      setLoggedUserAndProccedToNextScreen(users[0]);
+    try {
+      List<User> users = await GetAllUsersUseCase(userRepository).run();
+      if (users != null && users.length > 0) {
+        setLoggedUserAndProccedToNextScreen(users[0]);
+      }
+    } catch (error) {
+      this.error = error.message;
     }
   }
 
@@ -39,7 +43,7 @@ class LoginViewModel extends ChangeNotifier {
       User loggedUser = await LoginUseCase(userRepository).run(login);
       setLoggedUserAndProccedToNextScreen(loggedUser);
     } catch (error) {
-      this.error = error.toString();
+      this.error = error.message;
       notifyListeners();
     }
   }

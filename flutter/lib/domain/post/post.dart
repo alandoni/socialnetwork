@@ -11,7 +11,7 @@ class Post extends Codable {
   Post({this.user, this.text, this.date});
 
   Post.fromJson(Map<String, dynamic> json) : 
-    id = json["id"],
+    id = json["id"].toString(),
     user = User.fromJson(json["user"]),
     text = json["text"],
     date = json["date"],

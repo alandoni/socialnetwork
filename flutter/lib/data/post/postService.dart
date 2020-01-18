@@ -12,10 +12,10 @@ class PostService {
 
   Future<List<Post>> getPosts() async {
     HttpClient client = HttpClient();
-    List<Map<String, dynamic>> response = await client.get("/post");
-    return response.map((Map model) {
+    List<dynamic> response = await client.get("/post");
+    return response.map((model) {
       return Post.fromJson(model);
-    });
+    }).toList();
   }
 
   Future<Post> reactToPost(Reaction reaction) async {
