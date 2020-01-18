@@ -1,24 +1,29 @@
+import '../data/database.dart';
+import '../data/post/postDao.dart';
+import '../data/post/postRepository.dart';
+import '../data/post/postService.dart';
+import '../domain/post/postRepostiory.dart';
+import '../domain/post/usecases/createPostUseCase.dart';
+import '../domain/post/usecases/getAllPostsUseCase.dart';
 import 'package:flutter/material.dart';
-import '../data/httpClient.dart';
 import '../domain/post/post.dart';
 import '../domain/user/user.dart';
 import 'bindingTextField.dart';
-import 'dart:convert';
 
 class PostsViewModel extends ChangeNotifier {
   Binding<String> post = Binding.initialValue("");
   List<Post> posts = List();
   String error;
 
+  PostRepository postRepository;
+
+  PostsViewModel() {
+    this.postRepository = PostRepositoryImpl(PostDao(AppDatabase()), PostService());
+  }
+
   void loadData() async {
-    HttpClient client = HttpClient();
     try {
-      Iterable response = await client.get("/post");
-      if (response != null) {
-        this.posts = response.map((model) {
-          return Post.fromJson(model);
-        }).toList();
-      }
+      this.posts = await GetAllPostsUseCase(postRepository).run();
     } catch (error) {
       this.error = error.toString();
     }
@@ -27,15 +32,9 @@ class PostsViewModel extends ChangeNotifier {
 
   void createPost() async {
     Post newPost = Post(user: User.currentUser, text: post.value, date: DateTime.now().millisecondsSinceEpoch);
-    HttpClient client = HttpClient();
     try {
-      Map<String, dynamic> response = await client.post("/post", json.encode(newPost.toJson()));
-      if (response != null) {
-        Post storedPost = Post.fromJson(response);
-        posts.add(storedPost);
-        loadData();
-        return;
-      }
+      Post storedPost = await CreatePostUseCase(postRepository).run(newPost);
+      posts.add(storedPost);
     } catch (error) {
       this.error = error.toString();
     }

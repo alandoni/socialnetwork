@@ -18,16 +18,18 @@ class UserRepositoryImpl implements UserRepository {
 
   @override
   Future<User> login(Login login) {
-    return null;
+    return userService.login(login);
   }
 
   @override
   Future<List<User>> retrieveAll() {
-    return null;
+    return userDao.getAll();
   }
 
   @override
-  Future<User> store(User user) {
-    return null;
+  Future<User> store(User user) async {
+    int id = await userDao.insert(user);
+    user.id = id.toString();
+    return user;
   }
 }

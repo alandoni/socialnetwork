@@ -9,7 +9,7 @@ class GetAllPostsUseCase {
     this.postRepository = postRepository;
   }
 
-  Future<List<Post>> run(P) {
+  Future<List<Post>> run() {
     return postRepository.retrieveAllPosts();
   }
 }

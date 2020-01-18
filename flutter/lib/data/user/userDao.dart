@@ -4,7 +4,7 @@ import '../database.dart';
 
 class UserDao {
   AppDatabase database;
-  static const String TABLE = "user";
+  static const String TABLE = "users";
 
   UserDao(AppDatabase database) {
     this.database = database;

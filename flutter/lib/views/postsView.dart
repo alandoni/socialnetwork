@@ -60,7 +60,7 @@ class PostsView extends StatelessWidget {
                     child: ButtonTheme(
                       child: RaisedButton(
                         child: Text(
-                          "Login",
+                          "Enviar",
                           style: TextStyle(color: Colors.white)),
                         onPressed: () => model.createPost(),
                       ),

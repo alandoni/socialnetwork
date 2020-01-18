@@ -4,7 +4,6 @@ import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
 class AppDatabase {
-
   Database database;
 
   Future<Database> createDatabase() async {
@@ -37,7 +36,11 @@ class AppDatabase {
     final Database db = await createDatabase();
     final List<Map<String, dynamic>> maps = await db.query(table, where: where, whereArgs: whereArgs);
     db.close();
-    return maps;
+    if (maps.length > 0) {
+      return maps;
+    } else {
+      return List<Map<String, dynamic>>();
+    }
   }
 
   Future<int> update(String table, values, String where, List<String> whereArgs) async {
