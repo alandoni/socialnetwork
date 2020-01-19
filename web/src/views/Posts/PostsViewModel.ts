@@ -70,8 +70,7 @@ export class PostsViewModel extends ViewModel {
             user!,
             new Date().valueOf()
         )
-        const result = await new ReactToPostUseCase(this.postRepository).run(reaction);
-        const updatedPost = Post.fromJson(result);
+        const updatedPost = await new ReactToPostUseCase(this.postRepository).run(reaction);
 
         const postIndex = this.state.posts!.findIndex((existingPost: Post) => {
             return existingPost.id === post.id;

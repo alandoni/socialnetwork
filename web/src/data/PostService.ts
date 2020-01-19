@@ -13,12 +13,12 @@ export default class PostService extends Service {
 
     async createPost(post: Post): Promise<Post> {
         const result = await Axios.post(`${this.HOST}/post`, post);
-        return result.data;
+        return Post.fromJson(result.data);
     }
 
     async reactToPost(reaction: Reaction): Promise<Post> {
         const url = `${this.HOST}/post/${reaction.postId}/reaction`;
         const result = await Axios.post(url, reaction);
-        return result.data;
+        return Post.fromJson(result.data);
     }
 }
