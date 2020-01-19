@@ -2,10 +2,10 @@ import React from 'react';
 import LoginInput from './LoginInput';
 import axios from 'axios';
 import Login from '../../models/Login';
+import User from '../../models/User';
+import { RouteComponentProps, useHistory, withRouter } from 'react-router-dom';
 
-type Props = {
-    onLoginSuccess: Function
-}
+interface Props extends RouteComponentProps { }
 
 type State = {
     name: string;
@@ -13,7 +13,7 @@ type State = {
     error: string | null;
 }
 
-export default class LoginView extends React.Component<Props, State> {
+class LoginView extends React.Component<Props, State> {
     constructor(props: any) {
         super(props);
 
@@ -41,7 +41,8 @@ export default class LoginView extends React.Component<Props, State> {
         try {
             const user = await axios.post('http://localhost:8080/login', login);
             console.log(user.data);
-            this.props.onLoginSuccess(user.data);
+            User.loggedUser = user.data;
+            this.props.history.push('/posts');
         } catch (e) {
             console.log(e);
             this.setState({
@@ -62,3 +63,5 @@ export default class LoginView extends React.Component<Props, State> {
         )
     }
 }
+
+export default withRouter(LoginView as any)

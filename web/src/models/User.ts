@@ -8,4 +8,6 @@ export default class User {
         this.name = name;
         this.email = email;
     }
+
+    static loggedUser: User;
 }

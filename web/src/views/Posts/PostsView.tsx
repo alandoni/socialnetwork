@@ -5,9 +5,7 @@ import PostView from './PostView';
 import Axios from 'axios';
 import Reaction from '../../models/Reaction';
 
-type Props = {
-    loggedUser: User,
-}
+type Props = { }
 
 type State = {
     posts: Array<Post> | null,
@@ -48,7 +46,7 @@ export default class PostsView extends React.Component<Props, State> {
     createPost = async () => {
         const post = new Post(
             null,
-            this.props.loggedUser,
+            User.loggedUser,
             this.state.post,
             new Date().valueOf(),
             null
@@ -66,7 +64,7 @@ export default class PostsView extends React.Component<Props, State> {
         const reaction = new Reaction(
             post.id!,
             reactionType,
-            this.props.loggedUser,
+            User.loggedUser,
             new Date().valueOf()
         )
         const result = await Axios.post(url, reaction);
@@ -106,7 +104,7 @@ export default class PostsView extends React.Component<Props, State> {
         return (
             <div>
                 <div>
-                    Olá, {this.props.loggedUser.name}
+                    Olá, {User.loggedUser.name}
                 </div>
                 <div>
                     <h1>No que está pensando?</h1>
