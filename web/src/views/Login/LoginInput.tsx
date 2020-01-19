@@ -23,7 +23,10 @@ export default class LoginInput extends React.Component<Props> {
         return (
             <Form.Group>
                 <Form.Label>{this.props.label}</Form.Label>
-                <Form.Control type={this.props.type} value={this.props.value} onChange={this.onChange}/>
+                <Form.Control 
+                    type={this.props.type} 
+                    value={this.props.value} 
+                    onChange={this.onChange}/>
             </Form.Group>
         )
     }

@@ -1,4 +1,4 @@
-import User from "./User";
+import User from "../user/User";
 
 export default class Reaction {
     postId: string;

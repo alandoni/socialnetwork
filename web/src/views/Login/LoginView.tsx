@@ -1,62 +1,27 @@
 import React from 'react';
 import LoginInput from './LoginInput';
-import axios from 'axios';
-import Login from '../../models/Login';
-import User from '../../models/User';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import { Alert, Container, Row, Col, Button } from 'react-bootstrap';
+import { State, LoginViewModel } from './LoginViewModel';
+import { ViewModelComponent } from '../ViewModel';
 
 interface Props extends RouteComponentProps { }
 
-type State = {
-    name: string;
-    password: string;
-    error: string | null;
-}
-
-class LoginView extends React.Component<Props, State> {
+class LoginView extends ViewModelComponent<LoginViewModel, Props, State> {
     constructor(props: any) {
-        super(props);
-
-        this.state = {
-            name: '',
-            password: '',
-            error: null
-        }
+        super(props, new LoginViewModel());
+        this.viewModel.onLogin = this.onLogin;
     }
 
-    onChangeUserName = (newUsername: string) => {
-        this.setState({
-            name: newUsername,
-        });
-    }
-
-    onChangePassword = (newPassword: string) => {
-        this.setState({
-            password: newPassword,
-        });
-    }
-
-    onClickLogin = async () => {
-        const login = new Login(this.state.name, this.state.password);
-        try {
-            const user = await axios.post('http://localhost:8080/login', login);
-            console.log(user.data);
-            User.loggedUser = user.data;
-            this.props.history.push('/posts');
-        } catch (e) {
-            console.log(e);
-            this.setState({
-                error: e.message,
-            });
-        }
+    onLogin = () => {
+        this.props.history.push("/posts");
     }
 
     render() {
         return (
             <Container>
                 <Row className="justify-content-md-center">
-                    <Col xs={6} className="login-container">
+                    <Col md={6} className="login-container">
                         <Row>
                             <Col className="d-flex justify-content-center">
                                 <h2 className="text-primary">Login</h2>
@@ -71,7 +36,7 @@ class LoginView extends React.Component<Props, State> {
                                     label="Usuário" 
                                     type="email"
                                     value={this.state.name} 
-                                    onChange={this.onChangeUserName} />
+                                    onChange={this.viewModel.setUserName} />
                             </Col>
                         </Row>
                         <Row>
@@ -80,14 +45,14 @@ class LoginView extends React.Component<Props, State> {
                                     label="Senha"
                                     type="email"
                                     value={this.state.password}
-                                    onChange={this.onChangePassword} />
+                                    onChange={this.viewModel.setPassword} />
                             </Col>
                         </Row>
                         <Row>
                             <Col className="d-flex justify-content-center">
                                 <Button 
                                     variant="primary" 
-                                    onClick={this.onClickLogin}>
+                                    onClick={() => this.viewModel.login()}>
                                         Entrar
                                 </Button>
                             </Col>

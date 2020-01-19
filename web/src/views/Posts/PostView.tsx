@@ -1,5 +1,5 @@
 import React from 'react';
-import Post from '../../models/Post';
+import Post from '../../domain/post/Post';
 import ReactionView from './ReactionView'
 import { Row } from 'react-bootstrap';
 import { Col } from 'react-bootstrap';
@@ -34,7 +34,7 @@ export default class PostView extends React.Component<Props> {
                     </Row>
                     <hr />
                     <ReactionView 
-                        post={this.props.post} 
+                        post={this.props.post}
                         reactions={this.props.post.reactions}
                         onReact={this.props.onReact} />
                 </Col>

@@ -1,6 +1,6 @@
 import React from 'react';
-import Post from '../../models/Post';
-import { ReactionType } from '../../models/Reaction';
+import Post from '../../domain/post/Post';
+import { ReactionType } from '../../domain/post/Reaction';
 import { Row, Col } from 'react-bootstrap';
 
 type Props = {

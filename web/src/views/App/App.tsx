@@ -2,7 +2,6 @@ import React from 'react';
 import './App.css';
 import LoginView from '../Login/LoginView';
 import PostsView from '../Posts/PostsView';
-import User from '../../models/User';
 import {
     Switch,
     Route,
@@ -11,6 +10,9 @@ import {
 } from "react-router-dom";
 import NavBar from '../NavBar/NavBar';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import GetLoggedUserUseCase from '../../domain/post/usecases/GetLoggedUserUseCase';
+import UserRepositoryImpl from '../../data/UserRepositoryImpl';
+import UserService from '../../data/UserService';
 
 type Props = {
     isAuthenticated: Function,
@@ -44,7 +46,7 @@ export default class App extends React.Component<AppProps, State> {
     }
 
     isAuthenticated = () => {
-        let isAuth = !!User.loggedUser
+        let isAuth = !!new GetLoggedUserUseCase(new UserRepositoryImpl(new UserService())).run();
         return isAuth;
     }
 
@@ -54,9 +56,7 @@ export default class App extends React.Component<AppProps, State> {
                 <div className="background">
                     <NavBar hasSearch={this.state.isLoggedIn} />
                     <Switch>
-                        <Route path="/login" component={LoginView}>
-                            <LoginView />
-                        </Route>
+                        <Route path="/login" component={LoginView} />
                         <Route path="/">
                             <PrivateRoute
                                 path="/login"
