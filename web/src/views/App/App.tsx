@@ -20,7 +20,6 @@ type Props = {
 
 type State = {
     isLoggedIn: boolean;
-    loggedUser: User | null;
 };
 
 class PrivateRoute extends React.Component<Props> {
@@ -36,20 +35,24 @@ class PrivateRoute extends React.Component<Props> {
 type AppProps = {};
 
 export default class App extends React.Component<AppProps, State> {
+    hasBeenMounted: boolean;
+
     constructor(props: any) {
         super(props);
-        this.state = { isLoggedIn: false, loggedUser: null };
+        this.state = { isLoggedIn: false };
+        this.hasBeenMounted = false;
     }
 
     isAuthenticated = () => {
-        return User.loggedUser
+        let isAuth = !!User.loggedUser
+        return isAuth;
     }
 
     render() {
         return (
             <BrowserRouter>
                 <div className="background">
-                    <NavBar />
+                    <NavBar hasSearch={this.state.isLoggedIn} />
                     <Switch>
                         <Route path="/login" component={LoginView}>
                             <LoginView />

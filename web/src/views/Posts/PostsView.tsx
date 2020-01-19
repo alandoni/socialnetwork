@@ -4,6 +4,8 @@ import Post from '../../models/Post';
 import PostView from './PostView';
 import Axios from 'axios';
 import Reaction from '../../models/Reaction';
+import { Container, Form, Button, Row, Alert } from 'react-bootstrap';
+import { Col } from 'react-bootstrap';
 
 type Props = { }
 
@@ -96,28 +98,48 @@ export default class PostsView extends React.Component<Props, State> {
                 return this.renderPost(post, index);
             });
         } else {
-            return <div>Nenhum post encontrado</div>
+            return <Row className="login-container">
+                <Col>
+                    <Alert variant="warning">Nenhum post encontrado</Alert>
+                </Col>
+            </Row>
         }
     }
 
     render() {
         return (
-            <div>
-                <div>
-                    Olá, {User.loggedUser.name}
-                </div>
-                <div>
-                    <h1>No que está pensando?</h1>
-                    <input value={this.state.post} onChange={this.changePostText}></input>
-                    <button onClick={this.createPost}>Enviar</button>
-                </div>
-                <div>
-                    <h1>Posts:</h1>
-                    <div>
+            <Container>
+                <Row className="login-container">
+                    <Col>
+                        <Form>
+                            <Form.Group>
+                                <Row>
+                                    <Col>
+                                        <Form.Label>No que está pensando?</Form.Label>
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col>
+                                        <Form.Control as="textarea" rows={3} value={this.state.post} onChange={this.changePostText}/>
+                                    </Col>
+                                    <Col xs={1}>
+                                        <Button 
+                                            className="full-height"
+                                            onClick={this.createPost}>
+                                                Enviar
+                                        </Button>
+                                    </Col>
+                                </Row>
+                            </Form.Group>              
+                        </Form>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
                         {this.renderPosts()}
-                    </div>
-                </div>
-            </div>
+                    </Col>
+                </Row>
+            </Container>
         )
     }
 }

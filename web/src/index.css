@@ -8,6 +8,10 @@ html, body {
   background-color: #f4f4f4;
 }
 
+.full-height {
+  min-height: 100%;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

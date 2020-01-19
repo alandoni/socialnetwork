@@ -1,6 +1,7 @@
 import React from 'react';
 import Post from '../../models/Post';
 import { ReactionType } from '../../models/Reaction';
+import { Row, Col } from 'react-bootstrap';
 
 type Props = {
     post: Post
@@ -35,11 +36,14 @@ export default class ReactionView extends React.Component<Props> {
 
     render() {
         return (
-            <div>
-                <div className="reactions-view">{this.renderViewType(ReactionType.REACTION_LIKE)}</div>
-                <div className="reactions-view">{this.renderViewType(ReactionType.REACTION_DISLIKE)}</div>
-                <div className="float-none"></div>
-            </div>
+            <Row>
+                <Col className="reactions-view d-flex justify-content-center text-primary">
+                    {this.renderViewType(ReactionType.REACTION_LIKE)}
+                </Col>
+                <Col className="reactions-view d-flex justify-content-center text-primary">
+                    {this.renderViewType(ReactionType.REACTION_DISLIKE)}
+                </Col>
+            </Row>
         )
     }
 }

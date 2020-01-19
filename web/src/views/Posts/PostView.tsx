@@ -1,6 +1,8 @@
 import React from 'react';
 import Post from '../../models/Post';
 import ReactionView from './ReactionView'
+import { Row } from 'react-bootstrap';
+import { Col } from 'react-bootstrap';
 
 type Props = {
     post: Post,
@@ -14,14 +16,29 @@ export default class PostView extends React.Component<Props> {
 
     render() {
         return (
-            <div>
-                <p>{this.props.post.user.name} - {this.renderDate()}</p>
-                <p>{this.props.post.text}</p>
-                <ReactionView 
-                    post={this.props.post} 
-                    reactions={this.props.post.reactions}
-                    onReact={this.props.onReact} />
-            </div>
+            <Row className="login-container">
+                <Col>
+                    <Row>
+                        <Col className="text-primary">
+                            {this.props.post.user.name}
+                        </Col>
+                        <Col xs={2}>
+                            {this.renderDate()}
+                        </Col>
+                    </Row>
+                    <hr />
+                    <Row>
+                        <Col>
+                            {this.props.post.text}
+                        </Col>
+                    </Row>
+                    <hr />
+                    <ReactionView 
+                        post={this.props.post} 
+                        reactions={this.props.post.reactions}
+                        onReact={this.props.onReact} />
+                </Col>
+            </Row>
         )
     }
 }
