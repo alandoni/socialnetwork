@@ -1,9 +1,11 @@
 import React from 'react';
+import { Form } from 'react-bootstrap';
 
 type Props = {
     label: string;
     value: string;
-    onChange: Function
+    type: string;
+    onChange: Function;
 };
 
 export default class LoginInput extends React.Component<Props> {
@@ -19,10 +21,10 @@ export default class LoginInput extends React.Component<Props> {
 
     render() {
         return (
-            <div>
-                <p>{this.props.label}</p>
-                <input type="text" value={this.props.value} onChange={this.onChange}/>
-            </div>
+            <Form.Group>
+                <Form.Label>{this.props.label}</Form.Label>
+                <Form.Control type={this.props.type} value={this.props.value} onChange={this.onChange}/>
+            </Form.Group>
         )
     }
 }

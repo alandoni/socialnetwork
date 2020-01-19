@@ -9,6 +9,8 @@ import {
     Redirect,
     BrowserRouter,
 } from "react-router-dom";
+import NavBar from '../NavBar/NavBar';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 type Props = {
     isAuthenticated: Function,
@@ -46,23 +48,26 @@ export default class App extends React.Component<AppProps, State> {
     render() {
         return (
             <BrowserRouter>
-                <Switch>
-                    <Route path="/login" component={LoginView}>
-                        <LoginView />
-                    </Route>
-                    <Route path="/">
-                        <PrivateRoute
-                            path="/login"
-                            component={<PostsView />}
-                            isAuthenticated={this.isAuthenticated} />
-                    </Route>
-                    <Route path="/posts">
-                        <PrivateRoute
-                            path="/login"
-                            component={<PostsView />}
-                            isAuthenticated={this.isAuthenticated} />
-                    </Route>
-                </Switch>
+                <div className="background">
+                    <NavBar />
+                    <Switch>
+                        <Route path="/login" component={LoginView}>
+                            <LoginView />
+                        </Route>
+                        <Route path="/">
+                            <PrivateRoute
+                                path="/login"
+                                component={<PostsView />}
+                                isAuthenticated={this.isAuthenticated} />
+                        </Route>
+                        <Route path="/posts">
+                            <PrivateRoute
+                                path="/login"
+                                component={<PostsView />}
+                                isAuthenticated={this.isAuthenticated} />
+                        </Route>
+                    </Switch>
+                </div>
             </BrowserRouter>
         );
     }

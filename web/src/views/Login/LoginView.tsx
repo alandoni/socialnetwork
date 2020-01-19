@@ -3,7 +3,8 @@ import LoginInput from './LoginInput';
 import axios from 'axios';
 import Login from '../../models/Login';
 import User from '../../models/User';
-import { RouteComponentProps, useHistory, withRouter } from 'react-router-dom';
+import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { Alert, Container, Row, Col, Button } from 'react-bootstrap';
 
 interface Props extends RouteComponentProps { }
 
@@ -53,13 +54,47 @@ class LoginView extends React.Component<Props, State> {
 
     render() {
         return (
-            <div>
-                <h1>Login</h1>
-                <p>{this.state.error}</p>
-                <LoginInput label="Usuário" value={this.state.name} onChange={this.onChangeUserName} />
-                <LoginInput label="Senha" value={this.state.password} onChange={this.onChangePassword} />
-                <button onClick={this.onClickLogin}>Entrar</button>
-            </div>
+            <Container>
+                <Row className="justify-content-md-center">
+                    <Col xs={6} className="login-container">
+                        <Row>
+                            <Col className="d-flex justify-content-center">
+                                <h2 className="text-primary">Login</h2>
+                            </Col>
+                        </Row>
+                        { this.state.error ?
+                            <Alert variant="danger">{this.state.error}</Alert>
+                        : null }
+                        <Row>
+                            <Col>
+                                <LoginInput 
+                                    label="Usuário" 
+                                    type="email"
+                                    value={this.state.name} 
+                                    onChange={this.onChangeUserName} />
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col>
+                                <LoginInput 
+                                    label="Senha"
+                                    type="email"
+                                    value={this.state.password}
+                                    onChange={this.onChangePassword} />
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col className="d-flex justify-content-center">
+                                <Button 
+                                    variant="primary" 
+                                    onClick={this.onClickLogin}>
+                                        Entrar
+                                </Button>
+                            </Col>
+                        </Row>
+                    </Col>
+                </Row>
+            </Container>
         )
     }
 }
