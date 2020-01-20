@@ -1,8 +1,8 @@
 import React from 'react';
-import { Text, View, Button } from 'react-native';
+import { Text, View } from 'react-native';
 import { NavigationStackScreenProps } from 'react-navigation-stack';
 import { Styles } from '../Styles';
-import { TouchableHighlight, TextInput, ScrollView } from 'react-native-gesture-handler';
+import { TouchableHighlight, TextInput } from 'react-native-gesture-handler';
 import { ViewModelComponent } from '../ViewModel';
 import { LoginViewModel, State } from './LoginViewModel';
 

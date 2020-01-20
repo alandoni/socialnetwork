@@ -3,7 +3,7 @@ import { Styles } from '../Styles';
 import { Text, View } from 'react-native';
 import { ReactionType } from '../../domain/post/Reaction';
 import Post from '../../domain/post/Post';
-import { TouchableNativeFeedback, TouchableWithoutFeedback } from 'react-native-gesture-handler';
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
 type Props = {
     post: Post

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, ListViewDataSource } from 'react-native';
+import { Text, View } from 'react-native';
 import { NavigationStackScreenProps } from 'react-navigation-stack';
 import { State, PostsViewModel } from './PostsViewModel';
 import { ViewModelComponent } from '../ViewModel';
