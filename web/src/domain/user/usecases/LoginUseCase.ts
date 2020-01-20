@@ -1,6 +1,6 @@
-import UserRepository from "../../user/UserRepository";
-import User from "../../user/User";
-import Login from "../../user/Login";
+import UserRepository from "../UserRepository";
+import User from "../User";
+import Login from "../Login";
 
 export default class LoginUseCase {
     userRepository: UserRepository;

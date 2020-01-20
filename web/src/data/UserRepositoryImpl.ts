@@ -23,7 +23,11 @@ export default class UserRepositoryImpl implements UserRepository {
     
     async login(login: Login): Promise<User> {
         let user = await this.userService.login(login);
-        localStorage.setItem(this.LOGGED_USER, JSON.stringify(user));
+        await this.setLoggedUser(user);
         return user;
+    }
+
+    async setLoggedUser(user: User): Promise<void> {
+        return await localStorage.setItem(this.LOGGED_USER, JSON.stringify(user));
     }
 }

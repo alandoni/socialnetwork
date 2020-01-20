@@ -32,7 +32,7 @@ export default class PostsView extends ViewModelComponent<PostsViewModel, Props,
                 return this.renderPost(post, index);
             });
         } else {
-            return <Row className="login-container">
+            return <Row className="section">
                 <Col>
                     <Alert variant="warning">Nenhum post encontrado</Alert>
                 </Col>
@@ -43,7 +43,7 @@ export default class PostsView extends ViewModelComponent<PostsViewModel, Props,
     render() {
         return (
             <Container>
-                <Row className="login-container">
+                <Row className="section">
                     <Col>
                         <Form>
                             <Form.Group>
@@ -72,6 +72,7 @@ export default class PostsView extends ViewModelComponent<PostsViewModel, Props,
                         </Form>
                     </Col>
                 </Row>
+                <hr />
                 <Row>
                     <Col>
                         {this.renderPosts()}

@@ -16,7 +16,7 @@ export default class PostView extends React.Component<Props> {
 
     render() {
         return (
-            <Row className="login-container">
+            <Row className="section">
                 <Col>
                     <Row>
                         <Col className="text-primary">

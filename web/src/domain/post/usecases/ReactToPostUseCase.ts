@@ -1,6 +1,6 @@
-import Post from "../../post/Post";
-import PostRepository from "../../post/PostRepository";
-import Reaction from "../../post/Reaction";
+import Post from "../Post";
+import PostRepository from "../PostRepository";
+import Reaction from "../Reaction";
 
 export default class ReactToPostUseCase {
     postRepository: PostRepository;

@@ -2,7 +2,7 @@ import UserRepository from '../../domain/user/UserRepository';
 import UserService from '../../data/UserService';
 import UserRepositoryImpl from '../../data/UserRepositoryImpl';
 import Login from '../../domain/user/Login';
-import LoginUseCase from '../../domain/post/usecases/LoginUseCase';
+import LoginUseCase from '../../domain/user/usecases/LoginUseCase';
 import ViewModel from '../ViewModel';
 
 export type State = {

@@ -10,7 +10,7 @@ import {
 } from "react-router-dom";
 import NavBar from '../NavBar/NavBar';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import GetLoggedUserUseCase from '../../domain/post/usecases/GetLoggedUserUseCase';
+import GetLoggedUserUseCase from '../../domain/user/usecases/GetLoggedUserUseCase';
 import UserRepositoryImpl from '../../data/UserRepositoryImpl';
 import UserService from '../../data/UserService';
 

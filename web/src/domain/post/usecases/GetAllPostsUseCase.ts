@@ -1,5 +1,5 @@
-import Post from "../../post/Post";
-import PostRepository from "../../post/PostRepository";
+import Post from "../Post";
+import PostRepository from "../PostRepository";
 
 export default class GetAllPostsUseCase {
     postRepository: PostRepository;

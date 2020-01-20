@@ -21,7 +21,7 @@ class LoginView extends ViewModelComponent<LoginViewModel, Props, State> {
         return (
             <Container>
                 <Row className="justify-content-md-center">
-                    <Col md={6} className="login-container">
+                    <Col md={6} className="login-container section">
                         <Row>
                             <Col className="d-flex justify-content-center">
                                 <h2 className="text-primary">Login</h2>

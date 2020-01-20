@@ -3,13 +3,13 @@ import Post from "../../domain/post/Post";
 import PostRepositoryImpl from "../../data/PostRepositoryImpl";
 import PostService from "../../data/PostService";
 import PostRepository from "../../domain/post/PostRepository";
-import GetAllPostsUseCase from "../../domain/user/usecases/GetAllPostsUseCase";
-import CreatePostUseCase from "../../domain/user/usecases/CreatePostUseCase";
-import GetLoggedUserUseCase from "../../domain/post/usecases/GetLoggedUserUseCase";
+import GetAllPostsUseCase from "../../domain/post/usecases/GetAllPostsUseCase";
+import CreatePostUseCase from "../../domain/post/usecases/CreatePostUseCase";
+import GetLoggedUserUseCase from "../../domain/user/usecases/GetLoggedUserUseCase";
 import UserRepositoryImpl from "../../data/UserRepositoryImpl";
 import UserService from "../../data/UserService";
 import Reaction from "../../domain/post/Reaction";
-import ReactToPostUseCase from "../../domain/user/usecases/ReactToPostUseCase";
+import ReactToPostUseCase from "../../domain/post/usecases/ReactToPostUseCase";
 
 export type State = {
     loading: boolean;

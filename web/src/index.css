@@ -35,11 +35,16 @@ a {
   min-height: 100%;
 }
 
-.login-container {
+.section {
   border: 1px #cacaca solid;
   background-color: #fefefe;
   padding-top: 10px;
   padding-bottom: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.login-container {
   margin-top: 60px;
   margin-bottom: 60px;
 }
