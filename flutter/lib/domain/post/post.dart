@@ -1,3 +1,5 @@
+import 'package:SocialNetwork/domain/post/reaction.dart';
+
 import '../user/user.dart';
 import '../codable.dart';
 
@@ -6,26 +8,36 @@ class Post extends Codable {
   User user;
   String text;
   int date;
-  Map<String, dynamic> reactions;
+  Map<ReactionType, int> reactions;
 
   Post({this.user, this.text, this.date});
 
-  Post.fromJson(Map<String, dynamic> json) : 
-    id = json["id"].toString(),
-    user = User.fromJson(json["user"]),
-    text = json["text"],
-    date = json["date"],
-    reactions = json["reactions"],
-    super.fromJson(json);
+  Post.fromJson(Map<String, dynamic> json) {
+    id = json["id"].toString();
+    user = User.fromJson(json["user"]);
+    text = json["text"];
+    date = json["date"];
+    Map rawReactions = json["reactions"];
+    Map<ReactionType, int> map = rawReactions.map((key, value) {
+      return MapEntry<ReactionType, int>(Reaction.stringToReactionType(key), value);
+    });
+
+    reactions = map;
+  }
 
   @override
   Map<String, dynamic> toJson() {
-    return {
+    Map<String, int> rawReactions = reactions.map((key, value) {
+      return MapEntry<String, int>(Reaction.reactionTypeToString(key), value);
+    });
+
+    final result = {
       "id": id,
       "user": user.toJson(),
       "text": text,
       "date": date,
-      "reactions": reactions
+      "reactions": rawReactions,
     };
+    return result;
   }
 }

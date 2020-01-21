@@ -27,28 +27,24 @@ class AppDatabase {
   Future<int> insert(String table, Map values) async {
     Database db = await createDatabase();
     int result = await db.insert(table, values, conflictAlgorithm: ConflictAlgorithm.replace);
-    db.close();
     return result;
   }
 
   Future<List<Map<String, dynamic>>> get(String table, String where, List<String> whereArgs) async {
     Database db = await createDatabase();
     List<dynamic> maps = await db.query(table, where: where, whereArgs: whereArgs);
-    db.close();
     return maps.toList();
   }
 
   Future<int> update(String table, values, String where, List<String> whereArgs) async {
     final Database db = await createDatabase();
     int result = await db.update(table, values, where: where, whereArgs: whereArgs);
-    db.close();
     return result;
   }
 
   Future<int> delete(String table, String where, List<String> whereArgs) async {
     final Database db = await createDatabase();
     int result = await db.delete(table, where: where, whereArgs: whereArgs);
-    db.close();
     return result;
   }
 }

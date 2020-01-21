@@ -44,6 +44,9 @@ class LoginViewModel extends ChangeNotifier {
       setLoggedUserAndProccedToNextScreen(loggedUser);
     } catch (error) {
       this.error = error.message;
+      if (this.error.length == 0) {
+        this.error = error.osError.message;
+      }
       notifyListeners();
     }
   }

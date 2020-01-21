@@ -1,3 +1,6 @@
+import 'package:SocialNetwork/domain/post/reaction.dart';
+import 'package:SocialNetwork/domain/post/usecases/reactToPostUseCase.dart';
+
 import '../data/database.dart';
 import '../data/post/postDao.dart';
 import '../data/post/postRepository.dart';
@@ -35,6 +38,18 @@ class PostsViewModel extends ChangeNotifier {
     try {
       Post storedPost = await CreatePostUseCase(postRepository).run(newPost);
       posts.add(storedPost);
+    } catch (error) {
+      this.error = error.toString();
+    }
+    notifyListeners();
+  }
+
+  void reactToPost(Post post, ReactionType reactionType) async {
+    Reaction reaction = Reaction(post, reactionType, User.currentUser, DateTime.now().millisecondsSinceEpoch);
+    try {
+      Post response = await ReactToPostUseCase(postRepository).run(reaction);
+      int indexOf = posts.indexWhere((post) => response.id == post.id);
+      posts.replaceRange(indexOf, indexOf, [response]);
     } catch (error) {
       this.error = error.toString();
     }

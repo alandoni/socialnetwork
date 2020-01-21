@@ -10,6 +10,13 @@ class Reaction extends Codable {
   User user;
   int date;
 
+  Reaction(Post post, ReactionType reactionType, User user, int date) {
+    this.post = post;
+    this.reactionType = reactionType;
+    this.user = user;
+    this.date = date;
+  }
+
   Reaction.fromJson(Map<String, dynamic> json) :
     id = json["id"],
     post = Post.fromJson(json["post"]),
@@ -23,13 +30,13 @@ class Reaction extends Codable {
     return {
       "id": id,
       "post": post.toJson(),
-      "reactionType": reactionTypeToString(),
+      "reactionType": reactionTypeToString(reactionType),
       "user": user.toJson(),
       "date": date
     };
   }
 
-  String reactionTypeToString() {
+  static String reactionTypeToString(ReactionType reactionType) {
     switch (reactionType) {
       case ReactionType.REACTION_LIKE:
         return "like";

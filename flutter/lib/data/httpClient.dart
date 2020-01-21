@@ -2,7 +2,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class HttpClient {
-  static const String URL = "http://192.168.15.17:8080";
+  static const String URL = "http://192.168.15.11:8080";
 
   Future<dynamic> get(String url) async {
     final response = await http.get("$URL$url");
