@@ -11,6 +11,6 @@ import Combine
 class UserService {
     func login(login: Login) -> AnyPublisher<User, Error> {
         let api = LoginApi(body: login)
-        return RemoteRequester().request(api: api)
+        return HttpClient().request(api: api)
     }
 }

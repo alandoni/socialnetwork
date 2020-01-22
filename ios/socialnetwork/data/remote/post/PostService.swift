@@ -12,16 +12,16 @@ class PostService {
 
     func postPost(post: Post) -> AnyPublisher<Post, Error> {
         let api = PostPostApi(body: post)
-        return RemoteRequester().request(api: api)
+        return HttpClient().request(api: api)
     }
 
     func getPosts() -> AnyPublisher<[Post], Error> {
        let api = GetPostsApi()
-       return RemoteRequester().request(api: api)
+       return HttpClient().request(api: api)
     }
 
     func reactToPost(reaction: Reaction) -> AnyPublisher<Post, Error> {
         let api = ReactToPostApi(reaction: reaction)
-        return RemoteRequester().request(api: api)
+        return HttpClient().request(api: api)
     }
 }
